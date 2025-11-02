@@ -1,20 +1,26 @@
 {
-  "name": "animes-api",
+  "name": "100spera-api",
   "version": "1.0.0",
-  "description": "Projeto base de uma API com MVC",
+  "description": "Projeto Back-end contruído seguindo o modelo MVC para gestão de comandas e pedidos de um restaurante.",
   "keywords": [
     "nodejs",
     "javascript",
-    "prisma"
+    "prisma",
+    "restaurante",
+    "api",
+    "mvc",
+    "express",
+    "backend",
+    "gestão"
   ],
   "license": "MIT",
-  "author": "Felipe Dev",
+  "author": "Pedro Santos",
   "type": "module",
   "main": "src/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon src/server.js",
-    "prisma:seed": "node prisma/seed/seed.js" 
+    "prisma:seed": "node prisma/seed/seed.js"
   },
   "prisma": {
     "seed": "node prisma/seed/seed.js"
