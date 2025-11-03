@@ -1,5 +1,4 @@
 import OrderModel from "../models/order.model.js";
-import tableController from "./table.controller.js";
 
 class OrderController {
   async getAllOrders(req, res) {
@@ -38,7 +37,7 @@ class OrderController {
       "pago",
       "cancelado"
     ];
-    
+
     try {
 
       if (orderData.status && validStatus.includes(orderData.status) === false) {

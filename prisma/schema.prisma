@@ -18,24 +18,10 @@ model Category {
   @@map("categories")
 }
 
-model Dish {
-  id          Int     @id @default(autoincrement())
-  name        String
-  imageUrl    String?
-  description String?
-  price       Float
-  categoryId  Int
-  category    Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  @@map("dishes")
-}
 
 model Table {
   number Int @id 
-  status String @default("disponiível")
+  status String @default("disponível")
 
   orders Order[]
 
@@ -51,19 +37,54 @@ model Order {
   tableNumber Int 
   table     Table    @relation(fields: [tableNumber], references: [number], onDelete: Cascade)
 
+  orderItems OrderItem[]
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
   @@map("orders")
 }
 
+model Dish {
+  id          Int     @id @default(autoincrement())
+  name        String
+  imageUrl    String?
+  description String?
+  price       Float
+  categoryId  Int
+
+  orderItems OrderItem[]
+
+  category    Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("dishes")
+}
+
+model OrderItem {
+  id       Int   @id @default(autoincrement())
+  orderId  Int
+  dishId   Int
+  quantity Int
+  observations String?
+
+  order    Order @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  dish     Dish  @relation(fields: [dishId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("order_items")
+}
 model User {
   id Int @id @default(autoincrement())
   type String
   password String 
 
   createdAt DateTime @default(now())
-  updatedAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
   @@map("users")
 }
