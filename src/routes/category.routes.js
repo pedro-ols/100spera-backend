@@ -3,20 +3,20 @@ import categoryController from "../controllers/category.controller.js";
 
 const categoriesRouter = express.Router();
 
-// Rotas de categorys
-// GET /api/categorys - Listar todos os categorys
+// Rotas de categorias
+// GET /api/categories - Listar todos as categorias
 categoriesRouter.get("/", categoryController.getAllCategories);
 
-// GET /api/categorys/:id - Obter um category pelo ID
+// GET /api/categories/:id - Obter uma categoria pelo ID
 categoriesRouter.get("/:id", categoryController.getCategoryById);
 
-// POST /api/categorys - Criar um novo category
+// POST /api/categories - Criar uma nova categoria
 categoriesRouter.post("/", categoryController.createCategory);
 
-// PUT /api/categorys/:id - Atualizar um category
+// PUT /api/categories/:id - Atualizar uma categoria
 categoriesRouter.put("/:id", categoryController.updateCategory);
 
-// DELETE /api/categorys/:id - Remover um category
+// DELETE /api/categories/:id - Remover uma categoria
 categoriesRouter.delete("/:id", categoryController.deleteCategory);
 
 export default categoriesRouter;

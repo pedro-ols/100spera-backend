@@ -27,15 +27,14 @@ class CategoryController {
   }
 
   async createCategory(req, res) {
-
     const categoryData = req.body;
 
     try {
-
       if (!categoryData.name) {
         return res
           .status(400)
           .json({ error: "Coloque um nome para a categoria" });
+          
       }
 
       const newCategory = await CategoryModel.create(categoryData);
@@ -51,7 +50,6 @@ class CategoryController {
   }
 
   async updateCategory(req, res) {
-
     const { id } = req.params;
 
     const categoryData = req.body;
@@ -69,14 +67,11 @@ class CategoryController {
     }
   }
 
-  // DELETE /api/Categories/:id
   async deleteCategory(req, res) {
-
     const { id } = req.params;
 
     try {
-
-      if (!await CategoryModel.delete(id)) {
+      if (!(await CategoryModel.delete(id))) {
         return res.status(404).json({ error: "Categoria não encontrada" });
       }
 

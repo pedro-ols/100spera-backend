@@ -7,6 +7,14 @@ class CategoryModel {
       orderBy: {
         createdAt: "desc",
       },
+      include: {
+        dishes: {
+          select: {
+            id: true,
+            name: true,
+          }
+        },
+      }
     });
 
     return categories;
@@ -18,6 +26,14 @@ class CategoryModel {
       where: {
         id: Number(id),
       },
+      include: {
+        dishes: {
+          select: {
+            id: true,
+            name: true,
+          }
+        },
+      }
     });
 
     return category;

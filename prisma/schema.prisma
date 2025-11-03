@@ -10,11 +10,27 @@ datasource db {
 model Category {
   id          Int     @id @default(autoincrement())
   name      String  @unique
+  dishes    Dish[]  
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
   @@map("categories")
+}
+
+model Dish {
+  id          Int     @id @default(autoincrement())
+  name        String
+  imageUrl    String?
+  description String?
+  price       Float
+  categoryId  Int
+  category    Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("dishes")
 }
 
 model User {
