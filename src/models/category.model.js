@@ -5,7 +5,7 @@ class CategoryModel {
   async findAll() {
     const categories = await prisma.category.findMany({
       orderBy: {
-        createdAt: "desc",
+       id: "asc",
       },
       include: {
         dishes: {

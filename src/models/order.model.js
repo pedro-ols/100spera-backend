@@ -5,7 +5,7 @@ class OrderModel {
   async findAll() {
     const orders = await prisma.order.findMany({
       orderBy: {
-        createdAt: "desc",
+        id: "asc",
       },
     });
 

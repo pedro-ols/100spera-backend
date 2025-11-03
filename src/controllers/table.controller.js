@@ -30,7 +30,7 @@ class TableController {
     const tableData = req.body;
 
     const validStatus = ["disponível", "ocupada", "reservada"];
-
+    
     try {
       const newTable = await TableModel.create(tableData);
 
@@ -57,9 +57,15 @@ class TableController {
 
     const tableData = req.body;
 
+     const validStatus = ["disponível", "ocupada", "reservada"];
+
     try {
       if (!(await TableModel.findByNumber(number))) {
         return res.status(404).json({ error: "Mesa não encontrada" });
+      }
+      
+      if (tableData.status && validStatus.includes(tableData.status) === false) {
+        return res.status(400).json({ error: "Status de mesa inválido" });
       }
 
       const updatedTable = await TableModel.update(number, tableData);

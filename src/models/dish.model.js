@@ -5,7 +5,7 @@ class DishModel {
   async findAll() {
     const dishes = await prisma.dish.findMany({
       orderBy: {
-        createdAt: "desc",
+        id: "asc",
       },
     });
 

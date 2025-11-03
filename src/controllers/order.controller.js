@@ -1,4 +1,5 @@
 import OrderModel from "../models/order.model.js";
+import tableController from "./table.controller.js";
 
 class OrderController {
   async getAllOrders(req, res) {
@@ -29,25 +30,29 @@ class OrderController {
   async createOrder(req, res) {
     const orderData = req.body;
     
+    const validStatus = [
+      "pendente",
+      "em preparo",
+      "pronto",
+      "entregue",
+      "pago",
+      "cancelado"
+    ];
     
     try {
 
-        const validStatus = [
-          "pendente",
-          "em preparo",
-          "pronto",
-          "entregue",
-          "cancelado",
-        ];
-        
+      if (orderData.status && validStatus.includes(orderData.status) === false) {
+        console.log(orderData);
+        return res.status(400).json({ error: "Status de pedido inválido" });
+      }
+      if (!orderData.tableNumber) {
+        return res.status(400).json({ error: "Coloque um número para a mesa" });
+      }
+
       const newOrder = await OrderModel.create(orderData);
-      
 
       if (!newOrder) {
         return res.status(400).json({ error: "Erro ao criar pedido" });
-      }
-      if (validStatus.includes(orderData.status) === false) {
-        return res.status(400).json({ error: "Status de pedido inválido" });
       }
 
       res.status(201).json(newOrder);
@@ -61,9 +66,27 @@ class OrderController {
 
     const orderData = req.body;
 
+    const validStatus = [
+      "pendente",
+      "em preparo",
+      "pronto",
+      "entregue",
+      "pago",
+      "cancelado"
+    ];
+
     try {
-      if (!(await orderModel.findById(id))) {
+      if (!(await OrderModel.findById(id))) {
         return res.status(404).json({ error: "Pedido não encontrado" });
+      }
+
+
+      if (orderData.status && validStatus.includes(orderData.status) === false) {
+        console.log(orderData);
+        return res.status(400).json({ error: "Status de pedido inválido" });
+      }
+      if (!orderData.tableNumber) {
+        return res.status(400).json({ error: "Coloque um número para a mesa" });
       }
 
       const updatedOrder = await OrderModel.update(id, orderData);

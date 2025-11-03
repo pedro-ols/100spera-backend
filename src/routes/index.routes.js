@@ -15,6 +15,6 @@ router.use("/tables", tablesRouter);
 router.use("/categories", categoriesRouter);
 router.use("/dishes", dishesRouter);
 
-router.use(authMiddleware)
+// router.use(authMiddleware)
 
 export default router;

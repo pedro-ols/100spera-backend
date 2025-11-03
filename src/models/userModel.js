@@ -2,7 +2,11 @@ import prisma from "../../prisma/prisma.js"
 
 class UserModel {
     async findAll() {
-        const users = await prisma.user.findMany();
+        const users = await prisma.user.findMany({
+            orderBy: {
+                id: "asc"
+            }
+        });
 
         return users;
     }
