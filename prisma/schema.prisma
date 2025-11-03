@@ -19,7 +19,7 @@ model Category {
 }
 
 model Dish {
-  id          Int     @id @default(autoincrement())
+  id          Int     @id
   name        String
   imageUrl    String?
   description String?
@@ -33,6 +33,15 @@ model Dish {
   @@map("dishes")
 }
 
+model Table {
+  number Int @id @default(autoincrement())
+  status String @default("available")
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("tables")
+}
 model User {
   id Int @id @default(autoincrement())
   type String
