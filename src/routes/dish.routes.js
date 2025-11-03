@@ -3,8 +3,8 @@ import DishController from "../controllers/dish.controller.js";
 
 const dishesRouter = express.Router();
 
-// Rotas de categorias
-// GET /api/categories - Listar todos as categorias
+// Rotas de pedidos
+// GET /api/categories - Listar todos os pratos
 dishesRouter.get("/", DishController.getAllDishes);
 
 // GET /api/categories/:id - Obter um prato pelo ID

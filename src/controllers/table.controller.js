@@ -29,6 +29,8 @@ class TableController {
   async createTable(req, res) {
     const tableData = req.body;
 
+    const validStatus = ["disponível", "ocupada", "reservada"];
+
     try {
       const newTable = await TableModel.create(tableData);
 
@@ -39,6 +41,9 @@ class TableController {
         return res
           .status(400)
           .json({ error: "Coloque um número para a mesa" });
+      }
+      if (tableData.status && validStatus.includes(tableData.status) === false) {
+        return res.status(400).json({ error: "Status de mesa inválido" });
       }
 
       res.status(201).json(newTable);

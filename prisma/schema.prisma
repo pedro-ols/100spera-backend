@@ -19,7 +19,7 @@ model Category {
 }
 
 model Dish {
-  id          Int     @id
+  id          Int     @id @default(autoincrement())
   name        String
   imageUrl    String?
   description String?
@@ -34,14 +34,29 @@ model Dish {
 }
 
 model Table {
-  number Int @id @default(autoincrement())
-  status String @default("available")
+  number Int @id 
+  status String @default("disponiível")
+
+  orders Order[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
   @@map("tables")
 }
+
+model Order {
+  id        Int      @id @default(autoincrement())
+  status    String   @default("pendente")
+  tableNumber Int 
+  table     Table    @relation(fields: [tableNumber], references: [number], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("orders")
+}
+
 model User {
   id Int @id @default(autoincrement())
   type String
