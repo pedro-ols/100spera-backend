@@ -5,6 +5,8 @@ async function main() {
   console.log("Iniciando o seed...");
 
   await prisma.category.deleteMany({});
+  await prisma.table.deleteMany({});
+  await prisma.dish.deleteMany({});
 
   // Criação de categorias de pratos
 
@@ -329,6 +331,9 @@ async function main() {
       categoryId: drinks.id,
     },
   });
+
+  console.log("pratos criados. Inserindo ...");
+
 
 
 
