@@ -58,7 +58,12 @@ class CategoryController {
       if (!(await CategoryModel.findById(id))) {
         return res.status(404).json({ error: "Categoria não encontrada" });
       }
-
+      if (!categoryData.name) {
+        return res
+          .status(400)
+          .json({ error: "Coloque um nome para a categoria" });
+      }
+      
       const updatedCategory = await CategoryModel.update(id, categoryData);
       res.json(updatedCategory);
     } catch (error) {

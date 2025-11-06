@@ -8,9 +8,9 @@ datasource db {
 }
 
 model Category {
-  id          Int     @id @default(autoincrement())
-  name      String  @unique
-  dishes    Dish[]  
+  id     Int    @id @default(autoincrement())
+  name   String @unique
+  dishes Dish[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -18,9 +18,8 @@ model Category {
   @@map("categories")
 }
 
-
 model Table {
-  number Int @id 
+  number Int    @id
   status String @default("disponível")
 
   orders Order[]
@@ -32,10 +31,13 @@ model Table {
 }
 
 model Order {
-  id        Int      @id @default(autoincrement())
-  status    String   @default("pendente")
-  tableNumber Int 
-  table     Table    @relation(fields: [tableNumber], references: [number], onDelete: Cascade)
+  id          Int    @id @default(autoincrement())
+  status      String @default("pendente")
+  tableNumber Int
+  userId      Int
+
+  user  User  @relation(fields: [userId], references: [id], onDelete: Cascade)
+  table Table @relation(fields: [tableNumber], references: [number], onDelete: Cascade)
 
   orderItems OrderItem[]
 
@@ -55,7 +57,7 @@ model Dish {
 
   orderItems OrderItem[]
 
-  category    Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  category Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -64,24 +66,28 @@ model Dish {
 }
 
 model OrderItem {
-  id       Int   @id @default(autoincrement())
-  orderId  Int
-  dishId   Int
-  quantity Int
+  id           Int     @id @default(autoincrement())
+  orderId      Int
+  dishId       Int
+  quantity     Int
   observations String?
 
-  order    Order @relation(fields: [orderId], references: [id], onDelete: Cascade)
-  dish     Dish  @relation(fields: [dishId], references: [id], onDelete: Cascade)
+  order Order @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  dish  Dish  @relation(fields: [dishId], references: [id], onDelete: Cascade)
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
   @@map("order_items")
 }
+
 model User {
-  id Int @id @default(autoincrement())
-  type String
-  password String 
+  id         Int    @id @default(autoincrement())
+  name       String
+  type       String
+  accessCode String @unique
+
+  orders Order[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt

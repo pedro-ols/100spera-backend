@@ -11,11 +11,12 @@ import authMiddleware from '../middleware/authMiddleware.js';
 
 const router = express.Router();
 
-router.use("/orderItems", orderItemsRouter);
+router.use("/order-items", orderItemsRouter);
 router.use("/orders", ordersRouter);
 router.use("/tables", tablesRouter);
 router.use("/categories", categoriesRouter);
 router.use("/dishes", dishesRouter);
+router.use("/users", authRouter);
 
 // router.use(authMiddleware)
 

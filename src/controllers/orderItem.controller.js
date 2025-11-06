@@ -49,6 +49,8 @@ class OrderItemController {
 
       res.status(201).json(newOrderItem);
     } catch (error) {
+      console.log(orderItemData)
+      console.log(error);
       res.status(500).json({ error: "Erro ao criar item de pedido" });
     }
   }

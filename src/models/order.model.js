@@ -7,6 +7,9 @@ class OrderModel {
       orderBy: {
         id: "asc",
       },
+      include: {
+        user: true,
+      },
     });
 
     return orders;

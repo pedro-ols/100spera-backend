@@ -1,4 +1,5 @@
 import prisma from "../../prisma/prisma.js"
+import bcrypt from 'bcryptjs';
 
 class UserModel {
     async findAll() {
@@ -21,14 +22,31 @@ class UserModel {
         return user;
     }
 
-    async findByEmail(email) {
-        const user = await prisma.user.findUnique({
-            where: {
-                email
-            }
-        });
+    async findByAccessCode(accessCode) {
+        
+        const users = await prisma.user.findMany();
 
-        return user;
+        for (const user of users) {
+            const isMatch = await bcrypt.compare(accessCode, user.accessCode);
+            if (isMatch) {
+                return user;
+            }
+        }
+
+        return null;
+    }
+
+    async accessCodeExists(accessCode) {
+        const users = await prisma.user.findMany();
+
+        for (const user of users) {
+            const isMatch = await bcrypt.compare(accessCode, user.accessCode);
+            if (isMatch) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     async create(data) {

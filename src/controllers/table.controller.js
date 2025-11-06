@@ -37,6 +37,7 @@ class TableController {
       if (!newTable) {
         return res.status(400).json({ error: "Erro ao criar mesa" });
       }
+      
       if (!tableData.number) {
         return res
           .status(400)

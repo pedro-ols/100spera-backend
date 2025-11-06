@@ -30,11 +30,10 @@ class DishController {
     const dishData = req.body;
 
     try {
-      if (!dishData.name) {
+      if (!dishData.name || !dishData.price || !dishData.categoryId) {
         return res
           .status(400)
-          .json({ error: "Coloque um nome para o prato" });
-          
+          .json({ error: "Coloque um nome, preço e categoria para o prato" });
       }
 
       const newDish = await DishModel.create(dishData);
@@ -57,6 +56,12 @@ class DishController {
     try {
       if (!(await DishModel.findById(id))) {
         return res.status(404).json({ error: "prato não encontrado" });
+      }
+
+      if (!dishData.name || !dishData.price || !dishData.categoryId) {
+        return res
+          .status(400)
+          .json({ error: "Coloque um nome, preço e categoria para o prato" });
       }
 
       const updatedDish = await DishModel.update(id, dishData);
