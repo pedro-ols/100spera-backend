@@ -7,6 +7,9 @@ async function main() {
   await prisma.category.deleteMany({});
   await prisma.table.deleteMany({});
   await prisma.dish.deleteMany({});
+  await prisma.user.deleteMany({});
+  await prisma.order.deleteMany({});
+  await prisma.orderItem.deleteMany({});
 
   // Criação de categorias de pratos
 
@@ -332,15 +335,443 @@ async function main() {
     },
   });
 
-  console.log("pratos criados. Inserindo ...");
+  console.log("pratos criados. Inserindo usuario ...");
 
+  // Criação de usarios
 
+  const vitor_lira = await prisma.user.create({
+    data: {
+      name: "vitor sampaio",
+      type: "garçom",
+      accessCode: "12345"
+    },
+  });
+  const pedro_oliveira = await prisma.user.create({
+    data: {
+      name: "pedro oliveira",
+      type: "cozinha",
+      accessCode: "12345"
+    },
+  });
+  const vinicius_valverde = await prisma.user.create({
+    data: {
+      name: "vinicius valverde",
+      type: "garçom",
+      accessCode: "12345"
+    },
+  });
+  const julia_martins = await prisma.user.create({
+    data: {
+      name: "julia martins",
+      type: "cozinha",
+      accessCode: "12345"
+    },
+  });
+  const gabriela_fernanda = await prisma.user.create({
+    data: {
+      name: "gabriela fernanda",
+      type: "caixa",
+      accessCode: "12345"
+    },
+  });
+  const giovanni_gomes = await prisma.user.create({
+    data: {
+      name: "giovanni gomes",
+      type: "adiministrador",
+      accessCode: "12345"
+    },
+  });
 
+  // Criação de pedidos ( orders )
 
+  const pedido1 = await prisma.order.create({
+    data: {
+      tableNumber: 1,
+      userId: vinicius_valverde.id,
+    },
+  });
+  const pedido2 = await prisma.order.create({
+    data: {
+      tableNumber: 2,
+      userId: vinicius_valverde.id,
+    },
+  });
+  const pedido3 = await prisma.order.create({
+    data: {
+      tableNumber: 3,
+      userId: vinicius_valverde.id,
+    },
+  });
+  const pedido4 = await prisma.order.create({
+    data: {
+      tableNumber: 4,
+      userId: vinicius_valverde.id,
+    },
+  });
+  const pedido5 = await prisma.order.create({
+    data: {
+      tableNumber: 5,
+      userId: vinicius_valverde.id,
+    },
+  });
+  const pedido6 = await prisma.order.create({
+    data: {
+      tableNumber: 6,
+      userId: vitor_lira.id,
+    },
+  });
+  const pedido7 = await prisma.order.create({
+    data: {
+      tableNumber: 7,
+      userId: vitor_lira.id,
+    },
+  });
+  const pedido8 = await prisma.order.create({
+    data: {
+      tableNumber: 8,
+      userId: vitor_lira.id,
+    },
+  });
+  const pedido9 = await prisma.order.create({
+    data: {
+      tableNumber: 9,
+      userId: vitor_lira.id,
+    },
+  });
+  const pedido10 = await prisma.order.create({
+    data: {
+      tableNumber: 10,
+      userId: vitor_lira.id,
+    },
+  });
+
+  // criação de itens de pedido ( orderItems )
+
+  const orderItem1 = await prisma.orderItem.create({
+    data: {
+      orderId: pedido1.id,
+      dishId: frios.id,
+      quantity: 1,
+      observations: ""
+    },
+  });
+  const orderItem2 = await prisma.orderItem.create({
+    data: {
+      orderId: pedido1.id,
+      dishId: risoto.id,
+      quantity: 2,
+      observations: ""
+    },
+  });
+  const orderItem3 = await prisma.orderItem.create({
+    data: {
+      orderId: pedido1.id,
+      dishId: agua.id,
+      quantity: 1,
+      observations: ""
+    },
+  });
+  const orderItem4 = await prisma.orderItem.create({
+    data: {
+      orderId: pedido2.id,
+      dishId: caipirinha.id,
+      quantity: 1,
+      observations: ""
+    },
+  });
+  const orderItem5 = await prisma.orderItem.create({
+    data: {
+      orderId: pedido2.id,
+      dishId: file.id,
+      quantity: 1,
+      observations: "carne mal passada"
+    },
+  });
+  const orderItem6 = await prisma.orderItem.create({
+    data: {
+      orderId: pedido2.id,
+      dishId: cheesecake.id,
+      quantity: 1,
+      observations: ""
+    },
+  });
+  const orderItem7 = await prisma.orderItem.create({
+    data: {
+      orderId: pedido3.id,
+      dishId: salmao.id,
+      quantity: 3,
+      observations: "mais assado"
+    },
+  });
+  const orderItem8 = await prisma.orderItem.create({
+    data: {
+      orderId: pedido3.id,
+      dishId: limonada.id,
+      quantity: 3,
+      observations: "sem leite condensado"
+    },
+  });
+  const orderItem9 = await prisma.orderItem.create({
+    data: {
+      orderId: pedido3.id,
+      dishId: tiramisu.id,
+      quantity: 4,
+      observations: ""
+    },
+  });
+  const orderItem10 = await prisma.orderItem.create({
+    data: {
+      orderId: pedido4.id,
+      dishId: penne.id,
+      quantity: 1,
+      observations: "sem molho de tomate"
+    },
+  });
+  const orderItem11 = await prisma.orderItem.create({
+    data: {
+      orderId: pedido4.id,
+      dishId: pudim.id,
+      quantity: 1,
+      observations: ""
+    },
+  });
+  const orderItem12 = await prisma.orderItem.create({
+    data: {
+      orderId: pedido4.id,
+      dishId: refrigerante.id,
+      quantity: 2,
+      observations: ""
+    },
+  });
+  const orderItem13 = await prisma.orderItem.create({
+    data: {
+      orderId: pedido5.id,
+      dishId: mojito.id,
+      quantity: 2,
+      observations: ""
+    },
+  });
+  const orderItem14 = await prisma.orderItem.create({
+    data: {
+      orderId: pedido6.id,
+      dishId: spritz.id,
+      quantity: 3,
+      observations: ""
+    },
+  });
+  const orderItem15 = await prisma.orderItem.create({
+    data: {
+      orderId: pedido7.id,
+      dishId: agua.id,
+      quantity: 1,
+      observations: ""
+    },
+  });
+  const orderItem16 = await prisma.orderItem.create({
+    data: {
+      orderId: pedido7.id,
+      dishId: file.id,
+      quantity: 1,
+      observations: "carne no ponto "
+    },
+  });
+  const orderItem17 = await prisma.orderItem.create({
+    data: {
+      orderId: pedido8.id,
+      dishId: frios.id,
+      quantity: 1,
+      observations: "sem azeitonas"
+    },
+  });
+  const orderItem18 = await prisma.orderItem.create({
+    data: {
+      orderId: pedido8.id,
+      dishId: gin.id,
+      quantity: 1,
+      observations: "mais frutas"
+    },
+  });
+  const orderItem19 = await prisma.orderItem.create({
+    data: {
+      orderId: pedido9.id,
+      dishId: caipirinha.id,
+      quantity: 2,
+      observations: "sem gelo por favor"
+    },
+  });
+  const orderItem20 = await prisma.orderItem.create({
+    data: {
+      orderId: pedido10.id,
+      dishId: petit.id,
+      quantity: 1,
+      observations: "bolo mais quente"
+    },
+  });
+  const orderItem21 = await prisma.orderItem.create({
+  data: {
+    orderId: pedido1.id,
+    dishId: bolinho.id,
+    quantity: 2,
+    observations: "bem crocante, por favor",
+  },
+});
+
+const orderItem22 = await prisma.orderItem.create({
+  data: {
+    orderId: pedido1.id,
+    dishId: salmao.id,
+    quantity: 1,
+    observations: "sem legumes, substituir por purê de batata",
+  },
+});
+
+const orderItem23 = await prisma.orderItem.create({
+  data: {
+    orderId: pedido2.id,
+    dishId: risoto.id,
+    quantity: 1,
+    observations: "com camarões extras",
+  },
+});
+
+const orderItem24 = await prisma.orderItem.create({
+  data: {
+    orderId: pedido2.id,
+    dishId: refrigerante.id,
+    quantity: 2,
+    observations: "Coca-Cola zero",
+  },
+});
+
+const orderItem25 = await prisma.orderItem.create({
+  data: {
+    orderId: pedido3.id,
+    dishId: Carpaccio.id,
+    quantity: 1,
+    observations: "sem alcaparras",
+  },
+});
+
+const orderItem26 = await prisma.orderItem.create({
+  data: {
+    orderId: pedido3.id,
+    dishId: gin.id,
+    quantity: 1,
+    observations: "com mais frutas tropicais",
+  },
+});
+
+const orderItem27 = await prisma.orderItem.create({
+  data: {
+    orderId: pedido4.id,
+    dishId: file.id,
+    quantity: 1,
+    observations: "com arroz integral e molho separado",
+  },
+});
+
+const orderItem28 = await prisma.orderItem.create({
+  data: {
+    orderId: pedido4.id,
+    dishId: suco.id,
+    quantity: 1,
+    observations: "sem gelo",
+  },
+});
+
+const orderItem29 = await prisma.orderItem.create({
+  data: {
+    orderId: pedido5.id,
+    dishId: penne.id,
+    quantity: 1,
+    observations: "adicionar frango grelhado",
+  },
+});
+
+const orderItem30 = await prisma.orderItem.create({
+  data: {
+    orderId: pedido5.id,
+    dishId: caipirinha.id,
+    quantity: 1,
+    observations: "com açúcar normal, não mascavo",
+  },
+});
+
+const orderItem31 = await prisma.orderItem.create({
+  data: {
+    orderId: pedido6.id,
+    dishId: cheesecake.id,
+    quantity: 1,
+    observations: "sem calda, servir puro",
+  },
+});
+
+const orderItem32 = await prisma.orderItem.create({
+  data: {
+    orderId: pedido6.id,
+    dishId: limonada.id,
+    quantity: 1,
+    observations: "bem gelada",
+  },
+});
+
+const orderItem33 = await prisma.orderItem.create({
+  data: {
+    orderId: pedido7.id,
+    dishId: frios.id,
+    quantity: 1,
+    observations: "acrescentar presunto cru",
+  },
+});
+
+const orderItem34 = await prisma.orderItem.create({
+  data: {
+    orderId: pedido7.id,
+    dishId: pudim.id,
+    quantity: 1,
+    observations: "com calda extra",
+  },
+});
+
+const orderItem35 = await prisma.orderItem.create({
+  data: {
+    orderId: pedido8.id,
+    dishId: tiramisu.id,
+    quantity: 1,
+    observations: "com cacau extra por cima",
+  },
+});
+
+const orderItem36 = await prisma.orderItem.create({
+  data: {
+    orderId: pedido8.id,
+    dishId: spritz.id,
+    quantity: 1,
+    observations: "sem gelo, mais espumante",
+  },
+});
+
+const orderItem37 = await prisma.orderItem.create({
+  data: {
+    orderId: pedido9.id,
+    dishId: Bruschetta.id,
+    quantity: 1,
+    observations: "sem alho",
+  },
+});
+
+const orderItem38 = await prisma.orderItem.create({
+  data: {
+    orderId: pedido9.id,
+    dishId: agua.id,
+    quantity: 1,
+    observations: "com gás",
+  },
+});
 
 
   console.log(
-    `Seed concluído! ${await prisma.category.count()} categorias, ${await prisma.character.count()} personagens, ${await prisma.actor.count()} atores, ${await prisma.castle.count()} castelos e ${await prisma.book.count()} livros.`
+    `Seed concluído! ${await prisma.category.count()} categorias, ${await prisma.table.count()} mesas, ${await prisma.dish.count()} pratos, ${await prisma.order.count()} pedidos, ${await prisma.user.count()} usuarios, ${await prisma.orderItem.count()} itens de pedido.`
   );
 }
 
