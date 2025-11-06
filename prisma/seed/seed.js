@@ -7,6 +7,7 @@ async function main() {
   await prisma.category.deleteMany({});
   await prisma.table.deleteMany({});
   await prisma.dish.deleteMany({});
+  await prisma.user.deleteMany({});
 
   // Criação de categorias de pratos
 
@@ -332,12 +333,52 @@ async function main() {
     },
   });
 
-  console.log("pratos criados. Inserindo ...");
+  console.log("pratos criados. Inserindo usuario ...");
 
+  // Criação de usarios
 
-
-
-
+  const vitor_lira = await prisma.user.create({
+    data: {
+      name: "vitor sampaio",
+      type: "garçom",
+      accessCode: "12345"
+    },
+  });
+  const pedro_oliveira = await prisma.user.create({
+    data: {
+      name: "pedro oliveira",
+      type: "cozinha",
+      accessCode: "12345"
+    },
+  });
+  const vinnicius_valverde = await prisma.user.create({
+    data: {
+      name: "vinnicius valverde",
+      type: "garçom",
+      accessCode: "12345"
+    },
+  });
+  const julia_martins = await prisma.user.create({
+    data: {
+      name: "julia martins",
+      type: "cozinha",
+      accessCode: "12345"
+    },
+  });
+  const gabriela_fernanda = await prisma.user.create({
+    data: {
+      name: "gabriela fernanda",
+      type: "caixa",
+      accessCode: "12345"
+    },
+  });
+  const giovanni_gomes = await prisma.user.create({
+    data: {
+      name: "giovanni gomes",
+      type: "adiministrador",
+      accessCode: "12345"
+    },
+  });
 
   console.log(
     `Seed concluído! ${await prisma.category.count()} categorias, ${await prisma.character.count()} personagens, ${await prisma.actor.count()} atores, ${await prisma.castle.count()} castelos e ${await prisma.book.count()} livros.`
