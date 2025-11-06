@@ -16,6 +16,7 @@ router.use("/orders", ordersRouter);
 router.use("/tables", tablesRouter);
 router.use("/categories", categoriesRouter);
 router.use("/dishes", dishesRouter);
+router.use("/users", authRouter);
 
 // router.use(authMiddleware)
 
