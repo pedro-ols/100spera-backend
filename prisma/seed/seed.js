@@ -8,6 +8,7 @@ async function main() {
   await prisma.table.deleteMany({});
   await prisma.dish.deleteMany({});
   await prisma.user.deleteMany({});
+  await prisma.order.deleteMany({});
 
   // Criação de categorias de pratos
 
@@ -351,9 +352,9 @@ async function main() {
       accessCode: "12345"
     },
   });
-  const vinnicius_valverde = await prisma.user.create({
+  const vinicius_valverde = await prisma.user.create({
     data: {
-      name: "vinnicius valverde",
+      name: "vinicius valverde",
       type: "garçom",
       accessCode: "12345"
     },
@@ -379,6 +380,73 @@ async function main() {
       accessCode: "12345"
     },
   });
+
+  // Criação de pedidos ( orders )
+
+  const pedido1 = await prisma.order.create({
+    data: {
+      tableNumber: 1,
+      userId:vinicius_valverde.id,
+    },
+  });
+  const pedido2 = await prisma.order.create({
+    data: {
+      tableNumber: 2,
+      userId:vinicius_valverde.id,
+    },
+  });
+  const pedido3 = await prisma.order.create({
+    data: {
+      tableNumber: 3,
+      userId:vinicius_valverde.id,
+    },
+  });
+  const pedido4 = await prisma.order.create({
+    data: {
+      tableNumber: 4,
+      userId:vinicius_valverde.id,
+    },
+  });
+  const pedido5 = await prisma.order.create({
+    data: {
+      tableNumber: 5,
+      userId:vinicius_valverde.id,
+    },
+  });
+  const pedido6 = await prisma.order.create({
+    data: {
+      tableNumber: 6,
+      userId:vitor_lira.id,
+    },
+  });
+  const pedido7 = await prisma.order.create({
+    data: {
+      tableNumber: 7,
+      userId:vitor_lira.id,
+    },
+  });
+  const pedido8 = await prisma.order.create({
+    data: {
+      tableNumber: 8,
+      userId:vitor_lira.id,
+    },
+  });
+  const pedido9 = await prisma.order.create({
+    data: {
+      tableNumber: 9,
+      userId:vitor_lira.id,
+    },
+  });
+  const pedido10 = await prisma.order.create({
+    data: {
+      tableNumber: 10,
+      userId:vitor_lira.id,
+    },
+  });
+
+  // criação de itens de pedido ( orderItems )
+
+  
 
   console.log(
     `Seed concluído! ${await prisma.category.count()} categorias, ${await prisma.character.count()} personagens, ${await prisma.actor.count()} atores, ${await prisma.castle.count()} castelos e ${await prisma.book.count()} livros.`
