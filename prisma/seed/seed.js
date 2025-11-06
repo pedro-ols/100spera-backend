@@ -343,42 +343,42 @@ async function main() {
     data: {
       name: "vitor sampaio",
       type: "garçom",
-      accessCode: "12345"
+      accessCode: "vitor123"
     },
   });
   const pedro_oliveira = await prisma.user.create({
     data: {
       name: "pedro oliveira",
       type: "cozinha",
-      accessCode: "12345"
+      accessCode: "pedro123"
     },
   });
   const vinicius_valverde = await prisma.user.create({
     data: {
       name: "vinicius valverde",
       type: "garçom",
-      accessCode: "12345"
+      accessCode: "vinicius123"
     },
   });
   const julia_martins = await prisma.user.create({
     data: {
       name: "julia martins",
       type: "cozinha",
-      accessCode: "12345"
+      accessCode: "julia123"
     },
   });
   const gabriela_fernanda = await prisma.user.create({
     data: {
       name: "gabriela fernanda",
       type: "caixa",
-      accessCode: "12345"
+      accessCode: "gabriela123"
     },
   });
   const giovanni_gomes = await prisma.user.create({
     data: {
       name: "giovanni gomes",
       type: "adiministrador",
-      accessCode: "12345"
+      accessCode: "giovanni123"
     },
   });
 
@@ -766,6 +766,14 @@ const orderItem38 = await prisma.orderItem.create({
     dishId: agua.id,
     quantity: 1,
     observations: "com gás",
+  },
+});
+const orderItem39 = await prisma.orderItem.create({
+  data: {
+    orderId: pedido10.id,
+    dishId: agua.id,
+    quantity: 1,
+    observations: "quente, por favor cria",
   },
 });
 
