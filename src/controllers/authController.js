@@ -15,10 +15,10 @@ class AuthController {
 
     async register(req, res) {
         try {
-            const { name, email, password } = req.body;
+            const { name, email, accessCode } = req.body;
 
-            if(!name || !email || !password) {
-                return res.status(400).json({ error: "Os campos de nome, email e senha são obrigatórios" });
+            if(!name || !email || !accessCode) {
+                return res.status(400).json({ error: "Os campos de nome, email e código de acesso são obrigatórios" });
             } 
 
             const userExists = await UserModel.findByEmail(email);
@@ -26,12 +26,12 @@ class AuthController {
                 return res.status(400).json({ error: "Email já está cadastrado" });
             } 
 
-            const hashedPassword = await bcrypt.hash(password, 10);
+            const hashedAccessCode = await bcrypt.hash(accessCode, 10);
 
             const data = {
                 name,
                 email,
-                password: hashedPassword
+                accessCode: hashedAccessCode
             };
 
             const user = await UserModel.create(data);
@@ -44,10 +44,10 @@ class AuthController {
 
     async login (req,res) {
         try {
-            const { email, password } = req.body;
+            const { email, accessCode } = req.body;
 
-            if(!email || !password) {
-                return res.status(400).json({ error: "Os campos de email e senha são obrigatórios" });
+            if(!email || !accessCode) {
+                return res.status(400).json({ error: "Os campos de email e código de acesso são obrigatórios" });
             } 
 
             const userExists = await UserModel.findByEmail(email);
@@ -55,8 +55,8 @@ class AuthController {
                 return res.status(401).json({ error: "Credenciais inválidas" });
             } 
 
-            const isPasswordValid = await bcrypt.compare(password, userExists.password);
-            if(!isPasswordValid) {
+            const isAccessCodeValid = await bcrypt.compare(accessCode, userExists.accessCode);
+            if(!isAccessCodeValid) {
                 return res.status(401).json({ error: "Credenciais inválidas" });
             }
 

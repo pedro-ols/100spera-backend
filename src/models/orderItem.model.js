@@ -9,9 +9,8 @@ class OrderItemModel {
       },
       include: {
         order: {
-          select: {
-            tableNumber: true,
-            status: true,
+          include: {
+            user: true,
           }
         },
         dish: {

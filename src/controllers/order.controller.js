@@ -44,8 +44,9 @@ class OrderController {
         console.log(orderData);
         return res.status(400).json({ error: "Status de pedido inválido" });
       }
-      if (!orderData.tableNumber) {
-        return res.status(400).json({ error: "Coloque um número para a mesa" });
+
+      if (!orderData.tableNumber || !orderData.userId) {
+        return res.status(400).json({ error: "Coloque um número para a mesa e adicione um garçom" });
       }
 
       const newOrder = await OrderModel.create(orderData);
@@ -96,7 +97,6 @@ class OrderController {
     }
   }
 
-  // DELETE /api/Orderes/:id
   async deleteOrder(req, res) {
     const { id } = req.params;
 
