@@ -153,7 +153,7 @@ async function main() {
   const Bruschetta = await prisma.dish.create({
     data: {
       name: "Bruschetta Tradicional",
-      imageUrl: "",
+      imageUrl: "https://i.imgur.com/DH1IKZi.jpeg",
       description: "Pão italiano torrado com tomate, manjericão e azeite.",
       price: 25.0,
       categoryId: entrada.id,
@@ -162,7 +162,7 @@ async function main() {
   const bolinho = await prisma.dish.create({
     data: {
       name: "Bolinho de Bacalhau",
-      imageUrl: "",
+      imageUrl: "https://i.imgur.com/5stwFwf.jpeg",
       description: "Porção com seis bolinhos crocantes de bacalhau desfiado com batata e temperos especiais.",
       price: 30.0,
       categoryId: entrada.id,
@@ -171,7 +171,7 @@ async function main() {
   const Carpaccio = await prisma.dish.create({
     data: {
       name: "Carpaccio de Carne",
-      imageUrl: "",
+      imageUrl: "https://i.imgur.com/VW8oM6D.jpeg",
       description: "Fatias finas de carne com molho de mostarda e alcaparras.",
       price: 32.0,
       categoryId: entrada.id,
@@ -180,7 +180,7 @@ async function main() {
   const frios = await prisma.dish.create({
     data: {
       name: "Tábua de Queijos e Frios",
-      imageUrl: "",
+      imageUrl: "https://i.imgur.com/Hm9W1nb.jpeg",
       description: "Seleção de queijos, embutidos e frutas secas.",
       price: 38.0,
       categoryId: entrada.id,
@@ -190,7 +190,7 @@ async function main() {
   const file = await prisma.dish.create({
     data: {
       name: "Filé à Parmegiana",
-      imageUrl: "",
+      imageUrl: "https://i.imgur.com/y8lsQyk.jpeg",
       description: "Filé mignon empanado, molho de tomate artesanal e queijo derretido. Acompanha arroz e fritas.",
       price: 58.0,
       categoryId: pratos_principais.id,
@@ -199,7 +199,7 @@ async function main() {
   const salmao = await prisma.dish.create({
     data: {
       name: "Salmão Grelhado",
-      imageUrl: "",
+      imageUrl: "https://i.imgur.com/fwiB7Ay.jpeg",
       description: "Salmão fresco grelhado com azeite e ervas, servido com legumes salteados.",
       price: 64.0,
       categoryId: pratos_principais.id,
@@ -208,7 +208,7 @@ async function main() {
   const risoto = await prisma.dish.create({
     data: {
       name: "Risoto de Camarão",
-      imageUrl: "",
+      imageUrl: "https://i.imgur.com/dfdcAb4.jpeg",
       description: "Arroz arbório cremoso com camarões salteados e toque de limão siciliano",
       price: 70.0,
       categoryId: pratos_principais.id,
@@ -217,7 +217,7 @@ async function main() {
   const penne = await prisma.dish.create({
     data: {
       name: "Penne ao Pesto de Manjericão",
-      imageUrl: "",
+      imageUrl: "https://i.imgur.com/E8yjktO.jpeg",
       description: "Massa penne com molho pesto artesanal, parmesão e pinoli.",
       price: 50.0,
       categoryId: pratos_principais.id,
@@ -227,7 +227,7 @@ async function main() {
   const petit = await prisma.dish.create({
     data: {
       name: "Petit Gâteau",
-      imageUrl: "",
+      imageUrl: "https://i.imgur.com/VdaiC1B.jpeg",
       description: "Bolo de chocolate com recheio cremoso, servido com sorvete de creme.",
       price: 24.0,
       categoryId: sobremesas.id,
@@ -236,7 +236,7 @@ async function main() {
   const tiramisu = await prisma.dish.create({
     data: {
       name: "Tiramisù",
-      imageUrl: "",
+      imageUrl: "https://i.imgur.com/GlfBlvE.jpeg",
       description: "Clássico italiano com camadas de mascarpone e café expresso.",
       price: 26.0,
       categoryId: sobremesas.id,
@@ -245,7 +245,7 @@ async function main() {
   const cheesecake = await prisma.dish.create({
     data: {
       name: "Cheesecake de Frutas Vermelhas",
-      imageUrl: "",
+      imageUrl: "https://i.imgur.com/RVRNcoM.jpeg",
       description: "Base crocante de biscoito e cobertura artesanal de frutas vermelhas.",
       price: 25.0,
       categoryId: sobremesas.id,
@@ -254,7 +254,7 @@ async function main() {
   const pudim = await prisma.dish.create({
     data: {
       name: "pudim",
-      imageUrl: "",
+      imageUrl: "https://i.imgur.com/zKF5tzF.jpeg",
       description: "Tradicional, cremoso e com calda de caramelo artesanal.",
       price: 22.0,
       categoryId: sobremesas.id,
@@ -264,7 +264,7 @@ async function main() {
   const suco = await prisma.dish.create({
     data: {
       name: "Suco Natural de Laranja",
-      imageUrl: "",
+      imageUrl: "https://i.imgur.com/xrB8NcJ.jpeg",
       description: "Feito com laranjas frescas, sem adição de açúcar.",
       price: 10.0,
       categoryId: bebidas.id,
@@ -273,7 +273,7 @@ async function main() {
   const refrigerante = await prisma.dish.create({
     data: {
       name: "Refrigerante",
-      imageUrl: "",
+      imageUrl: "https://i.imgur.com/fPlwbZ8.jpeg",
       description: "Coca-Cola, Guaraná, Fanta ou Sprite (350ml).",
       price: 7.0,
       categoryId: bebidas.id,
@@ -282,7 +282,7 @@ async function main() {
   const agua = await prisma.dish.create({
     data: {
       name: "Àgua Mineral/com Gás",
-      imageUrl: "",
+      imageUrl: "https://i.imgur.com/2JIe3lO.jpeg",
       description: "Mineral (500ml).",
       price: 4.0,
       categoryId: bebidas.id,
@@ -291,7 +291,7 @@ async function main() {
   const limonada = await prisma.dish.create({
     data: {
       name: "Limonada Suíça",
-      imageUrl: "",
+      imageUrl: "https://i.imgur.com/hKdkX2m.jpeg",
       description: "Bebida refrescante feita com limão taiti e leite condensado.",
       price: 12.0,
       categoryId: bebidas.id,
@@ -301,7 +301,7 @@ async function main() {
   const caipirinha = await prisma.dish.create({
     data: {
       name: "Caipirinha",
-      imageUrl: "",
+      imageUrl: "https://i.imgur.com/gauFRdy.jpeg",
       description: "Cachaça artesanal, limão e açúcar mascavo.",
       price: 18.0,
       categoryId: drinks.id,
@@ -310,7 +310,7 @@ async function main() {
   const mojito = await prisma.dish.create({
     data: {
       name: "Mojito",
-      imageUrl: "",
+      imageUrl: "https://i.imgur.com/Xbv7guA.jpeg",
       description: "Rum branco, hortelã, limão e água com gás.",
       price: 25.0,
       categoryId: drinks.id,
@@ -319,7 +319,7 @@ async function main() {
   const spritz = await prisma.dish.create({
     data: {
       name: "Aperol Spritz",
-      imageUrl: "",
+      imageUrl: "https://i.imgur.com/ZuZXXBP.jpeg",
       description: "Aperol, espumante e água com gás, servido com fatia de laranja.",
       price: 30.0,
       categoryId: drinks.id,
@@ -328,7 +328,7 @@ async function main() {
   const gin = await prisma.dish.create({
     data: {
       name: "Gin Tônica Tropical",
-      imageUrl: "",
+      imageUrl: "https://i.imgur.com/NbpTr0F.jpeg",
       description: "Gin, água tônica e frutas tropicais frescas",
       price: 31.0,
       categoryId: drinks.id,
