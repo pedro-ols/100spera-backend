@@ -77,7 +77,7 @@ class AuthController {
             const userExists = await UserModel.findByAccessCode(accessCode);
 
             if (!userExists) {
-                return res.status(401).json({ error: "deu pau aqui Credenciais inválidas" });
+                return res.status(401).json({ error: "O usuário não existe" });
             }
 
             const token = jwt.sign(
@@ -99,7 +99,7 @@ class AuthController {
             console.error("Erro ao fazer login:", error);
             res.status(500).json({ error: "Erro ao fazer login" });
         }
-    }
+    }s
 
     async updateUser(req, res) {
         try {
