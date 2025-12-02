@@ -77,7 +77,7 @@ class AuthController {
             const userExists = await UserModel.findByAccessCode(accessCode);
 
             if (!userExists) {
-                return res.status(401).json({ error: "O usuário não existe" });
+                return res.status(401).json({ error: "Código inválido" });
             }
 
             const token = jwt.sign(
