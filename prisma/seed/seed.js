@@ -1,5 +1,8 @@
 import { PrismaClient } from "@prisma/client";
+import bcrypt from "bcrypt";
+
 const prisma = new PrismaClient();
+const saltRounds = 10;
 
 async function main() {
   console.log("Iniciando o seed...");
@@ -143,7 +146,54 @@ async function main() {
     },
   });
 
+ // Criação de usuários ( users )
+  const gabriela_fernanda =  await prisma.user.create({
+    data: {
+      name: "gabriela_fernanda",
+      accessCode: await bcrypt.hash('admin123', saltRounds),
+      type: "admin",
+    },
+  });
 
+  const giovanni_goncalves =  await prisma.user.create({
+    data: {
+      name: "giovanni_gonçalves",
+      accessCode: await bcrypt.hash('caixa123', saltRounds),
+      type: "caixa",
+    },
+  });
+
+  const julia_martins =  await prisma.user.create({
+    data: {
+      name: "julia_martins",
+      accessCode: await bcrypt.hash('cozinha123', saltRounds),
+      type: "cozinha",
+    },
+  });
+
+  const pedro_oliveira =  await prisma.user.create({
+    data: {
+      name: "pedro_oliveira",
+      accessCode: await bcrypt.hash('cozinha123', saltRounds),
+      type: "cozinha",
+    },
+  });
+
+  const vitor_lira =  await prisma.user.create({
+    data: {
+      name: "vitor_lira",
+      accessCode: await bcrypt.hash('garcom123', saltRounds),
+      type: "garcom",
+    },
+  });
+
+  const vinicius_valverde =  await prisma.user.create({
+    data: {
+      name: "vinicius_valverde",
+      accessCode: await bcrypt.hash('admin456', saltRounds),
+      type: "admin",
+    },
+  });
 
   console.log("mesas criadas. Inserindo pratos...");
 
