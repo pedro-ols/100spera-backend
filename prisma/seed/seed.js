@@ -208,7 +208,7 @@ async function main() {
 const onionRings = await prisma.dish.create({
   data: {
     name: "Onion Rings Crocantes",
-    imageUrl: "",
+    imageUrl: "https://i.imgur.com/B6LMCyh.jpeg",
     description: "Anéis de cebola empanados e crocantes, servidos com molho barbecue de mel.",
     price: 22.0,
     categoryId: entrada.id,
@@ -218,7 +218,7 @@ const onionRings = await prisma.dish.create({
 const batataRustica = await prisma.dish.create({
   data: {
     name: "Batata Rústica Temperada",
-    imageUrl: "",
+    imageUrl: "https://i.imgur.com/7O8eOO7.jpeg",
     description: "Batatas artesanais assadas com páprica, alecrim e alho, acompanhadas de maionese da casa.",
     price: 20.0,
     categoryId: entrada.id,
@@ -228,7 +228,7 @@ const batataRustica = await prisma.dish.create({
 const buffaloBites = await prisma.dish.create({
   data: {
     name: "Buffalo Chicken Bites",
-    imageUrl: "",
+    imageUrl: "https://i.imgur.com/Q6cNQkP.jpeg",
     description: "Cubinhos de frango empanado ao molho buffalo picante com molho blue cheese.",
     price: 28.0,
     categoryId: entrada.id,
@@ -238,7 +238,7 @@ const buffaloBites = await prisma.dish.create({
 const quesadillas = await prisma.dish.create({
   data: {
     name: "Mini Quesadillas Smash",
-    imageUrl: "",
+    imageUrl: "https://i.imgur.com/xeEIqNy.jpeg",
     description: "Tortillas recheadas com cheddar e carne smash desfiada, acompanhadas de sour cream.",
     price: 26.0,
     categoryId: entrada.id,
@@ -249,7 +249,7 @@ const quesadillas = await prisma.dish.create({
 const classicSmash = await prisma.dish.create({
   data: {
     name: "Classic Smash Burger",
-    imageUrl: "",
+    imageUrl: "https://i.imgur.com/3N5mIXT.jpeg",
     description: "Dois discos smash de 100g com cheddar derretido, picles, cebola e molho especial da casa.",
     price: 38.0,
     categoryId: pratos_principais.id,
@@ -259,7 +259,7 @@ const classicSmash = await prisma.dish.create({
 const texmexFire = await prisma.dish.create({
   data: {
     name: "Tex-Mex Fire Burger",
-    imageUrl: "",
+    imageUrl: "https://i.imgur.com/boDcHUO.jpeg",
     description: "Hambúrguer 180g com chili, cheddar, jalapeños, nachos crocantes e maionese spicy.",
     price: 42.0,
     categoryId: pratos_principais.id,
@@ -269,7 +269,7 @@ const texmexFire = await prisma.dish.create({
 const baconDouble = await prisma.dish.create({
   data: {
     name: "Bacon Double Crunch",
-    imageUrl: "",
+    imageUrl: "https://i.imgur.com/Vak91L4.jpeg",
     description: "Smash duplo com cheddar, bacon crocante, cebola crispy e molho defumado.",
     price: 44.0,
     categoryId: pratos_principais.id,
@@ -279,7 +279,7 @@ const baconDouble = await prisma.dish.create({
 const veggieGrill = await prisma.dish.create({
   data: {
     name: "Veggie Grill Burger",
-    imageUrl: "",
+    imageUrl: "https://i.imgur.com/47gVJrU.jpeg",
     description: "Hambúrguer vegetal grelhado com queijo prato, tomate grelhado, rúcula e maionese de ervas.",
     price: 36.0,
     categoryId: pratos_principais.id,
@@ -398,6 +398,57 @@ const veggieGrill = await prisma.dish.create({
     },
   });
 
+  //COMBOS
+  const comboClassico = await prisma.dish.create({
+    data: {
+      name: "Combo Clássico",
+      imageUrl: "https://i.imgur.com/hUQgezP.jpeg",
+      description: "Classic Smash Burger + Batata Rústica + Refrigerante",
+      price: 55.0,
+      categoryId: combos.id,
+    },
+  });
+
+  const comboDuploBacon = await prisma.dish.create({
+    data: {
+      name: "Combo Duplo Bacon",
+      imageUrl: "https://i.imgur.com/LsCMuqA.jpeg",
+      description: "Bacon Double Crunch + Batata Rústica + Refrigerante",
+      price: 62.0,
+      categoryId: combos.id,
+    },
+  });
+
+  const comboChickenCrispy = await prisma.dish.create({
+    data: {
+      name: "Combo Chicken Crispy",
+      imageUrl: "https://i.imgur.com/r99VWwN.jpeg",
+      description: "Buffalo Chicken Bites + Batata Rústica + Suco Natural de Laranja",
+      price: 50.0,
+      categoryId: combos.id,
+    },
+  });
+
+  const comboVeggie = await prisma.dish.create({
+    data: {
+      name: "Combo Veggie",
+      imageUrl: "https://i.imgur.com/UtmPTTJ.jpeg",
+      description: "Veggie Grill Burger + Batata Rústica + Limonada Suíça",
+      price: 58.0,
+      categoryId: combos.id,
+    },
+  });
+
+  const comboKids = await prisma.dish.create({
+    data: {
+      name: "Combo Kids",
+      imageUrl: "https://i.imgur.com/Lxa4Cj5.jpeg",
+      description: "Classic Smash Burger (metade) + Batata Rústica + Suco Natural de Laranja",
+      price: 42.0,
+      categoryId: combos.id,
+    },
+  });
+
   console.log("pratos criados. Inserindo usuario ...");
 
   // Criação de pedidos ( orders )
@@ -468,7 +519,7 @@ const veggieGrill = await prisma.dish.create({
   const orderItem1 = await prisma.orderItem.create({
     data: {
       orderId: pedido1.id,
-      dishId: frios.id,
+      dishId: classicSmash.id,
       quantity: 1,
       observations: ""
     },
@@ -476,7 +527,7 @@ const veggieGrill = await prisma.dish.create({
   const orderItem2 = await prisma.orderItem.create({
     data: {
       orderId: pedido1.id,
-      dishId: risoto.id,
+      dishId: batataRustica.id,
       quantity: 2,
       observations: ""
     },
@@ -500,9 +551,9 @@ const veggieGrill = await prisma.dish.create({
   const orderItem5 = await prisma.orderItem.create({
     data: {
       orderId: pedido2.id,
-      dishId: file.id,
+      dishId: baconDouble.id,
       quantity: 1,
-      observations: "carne mal passada"
+      observations: "bem passado"
     },
   });
   const orderItem6 = await prisma.orderItem.create({
@@ -516,9 +567,9 @@ const veggieGrill = await prisma.dish.create({
   const orderItem7 = await prisma.orderItem.create({
     data: {
       orderId: pedido3.id,
-      dishId: salmao.id,
+      dishId: texmexFire.id,
       quantity: 3,
-      observations: "mais assado"
+      observations: "sem jalapeños"
     },
   });
   const orderItem8 = await prisma.orderItem.create({
@@ -540,9 +591,9 @@ const veggieGrill = await prisma.dish.create({
   const orderItem10 = await prisma.orderItem.create({
     data: {
       orderId: pedido4.id,
-      dishId: penne.id,
+      dishId: veggieGrill.id,
       quantity: 1,
-      observations: "sem molho de tomate"
+      observations: "sem maionese"
     },
   });
   const orderItem11 = await prisma.orderItem.create({
@@ -588,17 +639,17 @@ const veggieGrill = await prisma.dish.create({
   const orderItem16 = await prisma.orderItem.create({
     data: {
       orderId: pedido7.id,
-      dishId: file.id,
+      dishId: baconDouble.id,
       quantity: 1,
-      observations: "carne no ponto "
+      observations: "carne no ponto"
     },
   });
   const orderItem17 = await prisma.orderItem.create({
     data: {
       orderId: pedido8.id,
-      dishId: frios.id,
+      dishId: onionRings.id,
       quantity: 1,
-      observations: "sem azeitonas"
+      observations: "bem crocante"
     },
   });
   const orderItem18 = await prisma.orderItem.create({
@@ -628,7 +679,7 @@ const veggieGrill = await prisma.dish.create({
   const orderItem21 = await prisma.orderItem.create({
   data: {
     orderId: pedido1.id,
-    dishId: bolinho.id,
+    dishId: buffaloBites.id,
     quantity: 2,
     observations: "bem crocante, por favor",
   },
@@ -637,18 +688,18 @@ const veggieGrill = await prisma.dish.create({
 const orderItem22 = await prisma.orderItem.create({
   data: {
     orderId: pedido1.id,
-    dishId: salmao.id,
+    dishId: classicSmash.id,
     quantity: 1,
-    observations: "sem legumes, substituir por purê de batata",
+    observations: "sem picles",
   },
 });
 
 const orderItem23 = await prisma.orderItem.create({
   data: {
     orderId: pedido2.id,
-    dishId: risoto.id,
+    dishId: quesadillas.id,
     quantity: 1,
-    observations: "com camarões extras",
+    observations: "com extra de queijo",
   },
 });
 
@@ -664,9 +715,9 @@ const orderItem24 = await prisma.orderItem.create({
 const orderItem25 = await prisma.orderItem.create({
   data: {
     orderId: pedido3.id,
-    dishId: Carpaccio.id,
+    dishId: batataRustica.id,
     quantity: 1,
-    observations: "sem alcaparras",
+    observations: "bem temperada",
   },
 });
 
@@ -682,9 +733,9 @@ const orderItem26 = await prisma.orderItem.create({
 const orderItem27 = await prisma.orderItem.create({
   data: {
     orderId: pedido4.id,
-    dishId: file.id,
+    dishId: texmexFire.id,
     quantity: 1,
-    observations: "com arroz integral e molho separado",
+    observations: "extra picante",
   },
 });
 
@@ -700,9 +751,9 @@ const orderItem28 = await prisma.orderItem.create({
 const orderItem29 = await prisma.orderItem.create({
   data: {
     orderId: pedido5.id,
-    dishId: penne.id,
+    dishId: veggieGrill.id,
     quantity: 1,
-    observations: "adicionar frango grelhado",
+    observations: "sem queijo",
   },
 });
 
@@ -736,9 +787,9 @@ const orderItem32 = await prisma.orderItem.create({
 const orderItem33 = await prisma.orderItem.create({
   data: {
     orderId: pedido7.id,
-    dishId: frios.id,
+    dishId: onionRings.id,
     quantity: 1,
-    observations: "acrescentar presunto cru",
+    observations: "extra crocante",
   },
 });
 
@@ -772,9 +823,9 @@ const orderItem36 = await prisma.orderItem.create({
 const orderItem37 = await prisma.orderItem.create({
   data: {
     orderId: pedido9.id,
-    dishId: Bruschetta.id,
+    dishId: buffaloBites.id,
     quantity: 1,
-    observations: "sem alho",
+    observations: "sem molho blue cheese",
   },
 });
 
