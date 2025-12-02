@@ -41,6 +41,11 @@ async function main() {
       name: "drinks",
     },
   });
+  const combos = await prisma.category.create({
+    data: {
+      name: "combos",
+    },
+  });
 
   console.log("categorias criadas. Inserindo mesas...");
 
@@ -199,80 +204,88 @@ async function main() {
 
   // Criação de pratos ( dishes )
 
-  //ENTRADAS
-  const Bruschetta = await prisma.dish.create({
-    data: {
-      name: "Bruschetta Tradicional",
-      imageUrl: "https://i.imgur.com/DH1IKZi.jpeg",
-      description: "Pão italiano torrado com tomate, manjericão e azeite.",
-      price: 25.0,
-      categoryId: entrada.id,
-    },
-  });
-  const bolinho = await prisma.dish.create({
-    data: {
-      name: "Bolinho de Bacalhau",
-      imageUrl: "https://i.imgur.com/5stwFwf.jpeg",
-      description: "Porção com seis bolinhos crocantes de bacalhau desfiado com batata e temperos especiais.",
-      price: 30.0,
-      categoryId: entrada.id,
-    },
-  });
-  const Carpaccio = await prisma.dish.create({
-    data: {
-      name: "Carpaccio de Carne",
-      imageUrl: "https://i.imgur.com/VW8oM6D.jpeg",
-      description: "Fatias finas de carne com molho de mostarda e alcaparras.",
-      price: 32.0,
-      categoryId: entrada.id,
-    },
-  });
-  const frios = await prisma.dish.create({
-    data: {
-      name: "Tábua de Queijos e Frios",
-      imageUrl: "https://i.imgur.com/Hm9W1nb.jpeg",
-      description: "Seleção de queijos, embutidos e frutas secas.",
-      price: 38.0,
-      categoryId: entrada.id,
-    },
-  });
-  //PRATOS PRINCIPAIS
-  const file = await prisma.dish.create({
-    data: {
-      name: "Filé à Parmegiana",
-      imageUrl: "https://i.imgur.com/y8lsQyk.jpeg",
-      description: "Filé mignon empanado, molho de tomate artesanal e queijo derretido. Acompanha arroz e fritas.",
-      price: 58.0,
-      categoryId: pratos_principais.id,
-    },
-  });
-  const salmao = await prisma.dish.create({
-    data: {
-      name: "Salmão Grelhado",
-      imageUrl: "https://i.imgur.com/fwiB7Ay.jpeg",
-      description: "Salmão fresco grelhado com azeite e ervas, servido com legumes salteados.",
-      price: 64.0,
-      categoryId: pratos_principais.id,
-    },
-  });
-  const risoto = await prisma.dish.create({
-    data: {
-      name: "Risoto de Camarão",
-      imageUrl: "https://i.imgur.com/dfdcAb4.jpeg",
-      description: "Arroz arbório cremoso com camarões salteados e toque de limão siciliano",
-      price: 70.0,
-      categoryId: pratos_principais.id,
-    },
-  });
-  const penne = await prisma.dish.create({
-    data: {
-      name: "Penne ao Pesto de Manjericão",
-      imageUrl: "https://i.imgur.com/E8yjktO.jpeg",
-      description: "Massa penne com molho pesto artesanal, parmesão e pinoli.",
-      price: 50.0,
-      categoryId: pratos_principais.id,
-    },
-  });
+  // ENTRADAS
+const onionRings = await prisma.dish.create({
+  data: {
+    name: "Onion Rings Crocantes",
+    imageUrl: "",
+    description: "Anéis de cebola empanados e crocantes, servidos com molho barbecue de mel.",
+    price: 22.0,
+    categoryId: entrada.id,
+  },
+});
+
+const batataRustica = await prisma.dish.create({
+  data: {
+    name: "Batata Rústica Temperada",
+    imageUrl: "",
+    description: "Batatas artesanais assadas com páprica, alecrim e alho, acompanhadas de maionese da casa.",
+    price: 20.0,
+    categoryId: entrada.id,
+  },
+});
+
+const buffaloBites = await prisma.dish.create({
+  data: {
+    name: "Buffalo Chicken Bites",
+    imageUrl: "",
+    description: "Cubinhos de frango empanado ao molho buffalo picante com molho blue cheese.",
+    price: 28.0,
+    categoryId: entrada.id,
+  },
+});
+
+const quesadillas = await prisma.dish.create({
+  data: {
+    name: "Mini Quesadillas Smash",
+    imageUrl: "",
+    description: "Tortillas recheadas com cheddar e carne smash desfiada, acompanhadas de sour cream.",
+    price: 26.0,
+    categoryId: entrada.id,
+  },
+});
+
+// PRATOS PRINCIPAIS (HAMBÚRGUERES)
+const classicSmash = await prisma.dish.create({
+  data: {
+    name: "Classic Smash Burger",
+    imageUrl: "",
+    description: "Dois discos smash de 100g com cheddar derretido, picles, cebola e molho especial da casa.",
+    price: 38.0,
+    categoryId: pratos_principais.id,
+  },
+});
+
+const texmexFire = await prisma.dish.create({
+  data: {
+    name: "Tex-Mex Fire Burger",
+    imageUrl: "",
+    description: "Hambúrguer 180g com chili, cheddar, jalapeños, nachos crocantes e maionese spicy.",
+    price: 42.0,
+    categoryId: pratos_principais.id,
+  },
+});
+
+const baconDouble = await prisma.dish.create({
+  data: {
+    name: "Bacon Double Crunch",
+    imageUrl: "",
+    description: "Smash duplo com cheddar, bacon crocante, cebola crispy e molho defumado.",
+    price: 44.0,
+    categoryId: pratos_principais.id,
+  },
+});
+
+const veggieGrill = await prisma.dish.create({
+  data: {
+    name: "Veggie Grill Burger",
+    imageUrl: "",
+    description: "Hambúrguer vegetal grelhado com queijo prato, tomate grelhado, rúcula e maionese de ervas.",
+    price: 36.0,
+    categoryId: pratos_principais.id,
+  },
+});
+
   //SOBREMESAS
   const petit = await prisma.dish.create({
     data: {
