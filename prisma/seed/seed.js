@@ -4,7 +4,7 @@ import bcrypt from "bcrypt";
 const prisma = new PrismaClient();
 const saltRounds = 10;
 
-async function main() {
+async function main() {   
   console.log("Iniciando o seed...");
 
   await prisma.category.deleteMany({});
@@ -23,7 +23,7 @@ async function main() {
   });
   const pratos_principais = await prisma.category.create({
     data: {
-      name: "Pratos Principais",
+      name: "Principal",
     },
   });
   const sobremesas = await prisma.category.create({
@@ -38,12 +38,12 @@ async function main() {
   });
   const drinks = await prisma.category.create({
     data: {
-      name: "drinks",
+      name: "Drinks",
     },
   });
   const combos = await prisma.category.create({
     data: {
-      name: "combos",
+      name: "Combos",
     },
   });
 
