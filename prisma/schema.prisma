@@ -50,7 +50,6 @@ model Order {
 model Dish {
   id          Int     @id @default(autoincrement())
   name        String
-  imageUrl    String?
   description String?
   price       Float
   categoryId  Int

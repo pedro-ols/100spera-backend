@@ -28,6 +28,38 @@ class AuthController {
         }
     }
 
+    async resetAccessCode(req, res) {
+        try {
+            const { id } = req.params;
+            const user = await UserModel.findById(id);
+
+            if (!user) {
+                return res.status(404).json({ error: "Usuário não encontrado" });
+            }
+
+            // Gera um novo código aleatório de 6 dígitos
+            const newAccessCode = Math.floor(100000 + Math.random() * 900000).toString();
+            
+            // Criptografa o novo código
+            const hashedAccessCode = await bcrypt.hash(newAccessCode, 10);
+
+            // Atualiza o usuário com o novo código
+            await UserModel.update(id, { 
+                accessCode: hashedAccessCode
+            });
+
+            res.json({ 
+                newAccessCode: newAccessCode,
+                userId: user.id,
+                name: user.name,
+                message: "Novo código de acesso gerado com sucesso"
+            });
+        } catch (error) {
+            console.error("Erro ao resetar código de acesso:", error);
+            res.status(500).json({ error: "Erro ao resetar código de acesso" });
+        }
+    }
+
     async register(req, res) {
         try {
             const { name, type, accessCode } = req.body;
@@ -35,6 +67,13 @@ class AuthController {
             if (!name || !type || !accessCode) {
                 return res.status(400).json({
                     error: "Os campos de nome, tipo e código de acesso são obrigatórios",
+                });
+            }
+
+            const validTypes = ["administrador", "caixa", "garcom", "cozinha"];
+            if (!validTypes.includes(type)) {
+                return res.status(400).json({
+                    error: "Tipo de usuário inválido. Tipos permitidos: administrador, caixa, garcom, cozinha",
                 });
             }
 
@@ -109,6 +148,13 @@ class AuthController {
             if (!name || !type || !accessCode) {
                 return res.status(400).json({
                     error: "Os campos de nome, tipo e código de acesso são obrigatórios",
+                });
+            }
+
+            const validTypes = ["administrador", "caixa", "garcom", "cozinha"];
+            if (!validTypes.includes(type)) {
+                return res.status(400).json({
+                    error: "Tipo de usuário inválido. Tipos permitidos: administrador, caixa, garcom, cozinha",
                 });
             }
 

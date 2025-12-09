@@ -61,8 +61,8 @@
 |--------|----------|-----------|------|
 | GET | `/dishes` | Lista todos pratos | - |
 | GET | `/dishes/:id` | Busca prato por ID | - |
-| POST | `/dishes` | Cria prato | `name`, `price`, `categoryId`, `imageUrl?`, `description?` |
-| PUT | `/dishes/:id` | Atualiza prato | `name`, `price`, `categoryId`, `imageUrl?`, `description?` |
+| POST | `/dishes` | Cria prato | `name`, `price`, `categoryId`, `description?` |
+| PUT | `/dishes/:id` | Atualiza prato | `name`, `price`, `categoryId`, `description?` |
 | DELETE | `/dishes/:id` | Remove prato | - |
 
 ---

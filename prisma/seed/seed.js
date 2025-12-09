@@ -156,7 +156,7 @@ async function main() {
     data: {
       name: "gabriela_fernanda",
       accessCode: await bcrypt.hash('admin123', saltRounds),
-      type: "admin",
+      type: "administrador",
     },
   });
 
@@ -196,7 +196,7 @@ async function main() {
     data: {
       name: "vinicius_valverde",
       accessCode: await bcrypt.hash('admin456', saltRounds),
-      type: "admin",
+      type: "administrador",
     },
   });
 
@@ -208,7 +208,6 @@ async function main() {
 const onionRings = await prisma.dish.create({
   data: {
     name: "Onion Rings Crocantes",
-    imageUrl: "https://i.imgur.com/B6LMCyh.jpeg",
     description: "Anéis de cebola empanados e crocantes, servidos com molho barbecue de mel.",
     price: 22.0,
     categoryId: entrada.id,
@@ -218,7 +217,6 @@ const onionRings = await prisma.dish.create({
 const batataRustica = await prisma.dish.create({
   data: {
     name: "Batata Rústica Temperada",
-    imageUrl: "https://i.imgur.com/7O8eOO7.jpeg",
     description: "Batatas artesanais assadas com páprica, alecrim e alho, acompanhadas de maionese da casa.",
     price: 20.0,
     categoryId: entrada.id,
@@ -228,7 +226,6 @@ const batataRustica = await prisma.dish.create({
 const buffaloBites = await prisma.dish.create({
   data: {
     name: "Buffalo Chicken Bites",
-    imageUrl: "https://i.imgur.com/Q6cNQkP.jpeg",
     description: "Cubinhos de frango empanado ao molho buffalo picante com molho blue cheese.",
     price: 28.0,
     categoryId: entrada.id,
@@ -238,7 +235,6 @@ const buffaloBites = await prisma.dish.create({
 const quesadillas = await prisma.dish.create({
   data: {
     name: "Mini Quesadillas Smash",
-    imageUrl: "https://i.imgur.com/xeEIqNy.jpeg",
     description: "Tortillas recheadas com cheddar e carne smash desfiada, acompanhadas de sour cream.",
     price: 26.0,
     categoryId: entrada.id,
@@ -249,7 +245,6 @@ const quesadillas = await prisma.dish.create({
 const classicSmash = await prisma.dish.create({
   data: {
     name: "Classic Smash Burger",
-    imageUrl: "https://i.imgur.com/3N5mIXT.jpeg",
     description: "Dois discos smash de 100g com cheddar derretido, picles, cebola e molho especial da casa.",
     price: 38.0,
     categoryId: pratos_principais.id,
@@ -259,7 +254,6 @@ const classicSmash = await prisma.dish.create({
 const texmexFire = await prisma.dish.create({
   data: {
     name: "Tex-Mex Fire Burger",
-    imageUrl: "https://i.imgur.com/boDcHUO.jpeg",
     description: "Hambúrguer 180g com chili, cheddar, jalapeños, nachos crocantes e maionese spicy.",
     price: 42.0,
     categoryId: pratos_principais.id,
@@ -269,7 +263,6 @@ const texmexFire = await prisma.dish.create({
 const baconDouble = await prisma.dish.create({
   data: {
     name: "Bacon Double Crunch",
-    imageUrl: "https://i.imgur.com/Vak91L4.jpeg",
     description: "Smash duplo com cheddar, bacon crocante, cebola crispy e molho defumado.",
     price: 44.0,
     categoryId: pratos_principais.id,
@@ -279,7 +272,6 @@ const baconDouble = await prisma.dish.create({
 const veggieGrill = await prisma.dish.create({
   data: {
     name: "Veggie Grill Burger",
-    imageUrl: "https://i.imgur.com/47gVJrU.jpeg",
     description: "Hambúrguer vegetal grelhado com queijo prato, tomate grelhado, rúcula e maionese de ervas.",
     price: 36.0,
     categoryId: pratos_principais.id,
@@ -290,7 +282,6 @@ const veggieGrill = await prisma.dish.create({
   const petit = await prisma.dish.create({
     data: {
       name: "Petit Gâteau",
-      imageUrl: "https://i.imgur.com/VdaiC1B.jpeg",
       description: "Bolo de chocolate com recheio cremoso, servido com sorvete de creme.",
       price: 24.0,
       categoryId: sobremesas.id,
@@ -299,7 +290,6 @@ const veggieGrill = await prisma.dish.create({
   const tiramisu = await prisma.dish.create({
     data: {
       name: "Tiramisù",
-      imageUrl: "https://i.imgur.com/GlfBlvE.jpeg",
       description: "Clássico italiano com camadas de mascarpone e café expresso.",
       price: 26.0,
       categoryId: sobremesas.id,
@@ -308,7 +298,6 @@ const veggieGrill = await prisma.dish.create({
   const cheesecake = await prisma.dish.create({
     data: {
       name: "Cheesecake de Frutas Vermelhas",
-      imageUrl: "https://i.imgur.com/RVRNcoM.jpeg",
       description: "Base crocante de biscoito e cobertura artesanal de frutas vermelhas.",
       price: 25.0,
       categoryId: sobremesas.id,
@@ -317,7 +306,6 @@ const veggieGrill = await prisma.dish.create({
   const pudim = await prisma.dish.create({
     data: {
       name: "pudim",
-      imageUrl: "https://i.imgur.com/zKF5tzF.jpeg",
       description: "Tradicional, cremoso e com calda de caramelo artesanal.",
       price: 22.0,
       categoryId: sobremesas.id,
@@ -327,7 +315,6 @@ const veggieGrill = await prisma.dish.create({
   const suco = await prisma.dish.create({
     data: {
       name: "Suco Natural de Laranja",
-      imageUrl: "https://i.imgur.com/xrB8NcJ.jpeg",
       description: "Feito com laranjas frescas, sem adição de açúcar.",
       price: 10.0,
       categoryId: bebidas.id,
@@ -336,7 +323,6 @@ const veggieGrill = await prisma.dish.create({
   const refrigerante = await prisma.dish.create({
     data: {
       name: "Refrigerante",
-      imageUrl: "https://i.imgur.com/fPlwbZ8.jpeg",
       description: "Coca-Cola, Guaraná, Fanta ou Sprite (350ml).",
       price: 7.0,
       categoryId: bebidas.id,
@@ -345,7 +331,6 @@ const veggieGrill = await prisma.dish.create({
   const agua = await prisma.dish.create({
     data: {
       name: "Àgua Mineral/com Gás",
-      imageUrl: "https://i.imgur.com/2JIe3lO.jpeg",
       description: "Mineral (500ml).",
       price: 4.0,
       categoryId: bebidas.id,
@@ -354,7 +339,6 @@ const veggieGrill = await prisma.dish.create({
   const limonada = await prisma.dish.create({
     data: {
       name: "Limonada Suíça",
-      imageUrl: "https://i.imgur.com/hKdkX2m.jpeg",
       description: "Bebida refrescante feita com limão taiti e leite condensado.",
       price: 12.0,
       categoryId: bebidas.id,
@@ -364,7 +348,6 @@ const veggieGrill = await prisma.dish.create({
   const caipirinha = await prisma.dish.create({
     data: {
       name: "Caipirinha",
-      imageUrl: "https://i.imgur.com/gauFRdy.jpeg",
       description: "Cachaça artesanal, limão e açúcar mascavo.",
       price: 18.0,
       categoryId: drinks.id,
@@ -373,7 +356,6 @@ const veggieGrill = await prisma.dish.create({
   const mojito = await prisma.dish.create({
     data: {
       name: "Mojito",
-      imageUrl: "https://i.imgur.com/Xbv7guA.jpeg",
       description: "Rum branco, hortelã, limão e água com gás.",
       price: 25.0,
       categoryId: drinks.id,
@@ -382,7 +364,6 @@ const veggieGrill = await prisma.dish.create({
   const spritz = await prisma.dish.create({
     data: {
       name: "Aperol Spritz",
-      imageUrl: "https://i.imgur.com/ZuZXXBP.jpeg",
       description: "Aperol, espumante e água com gás, servido com fatia de laranja.",
       price: 30.0,
       categoryId: drinks.id,
@@ -391,7 +372,6 @@ const veggieGrill = await prisma.dish.create({
   const gin = await prisma.dish.create({
     data: {
       name: "Gin Tônica Tropical",
-      imageUrl: "https://i.imgur.com/NbpTr0F.jpeg",
       description: "Gin, água tônica e frutas tropicais frescas",
       price: 31.0,
       categoryId: drinks.id,
@@ -402,7 +382,6 @@ const veggieGrill = await prisma.dish.create({
   const comboClassico = await prisma.dish.create({
     data: {
       name: "Combo Clássico",
-      imageUrl: "https://i.imgur.com/hUQgezP.jpeg",
       description: "Classic Smash Burger + Batata Rústica + Refrigerante",
       price: 55.0,
       categoryId: combos.id,
@@ -412,7 +391,6 @@ const veggieGrill = await prisma.dish.create({
   const comboDuploBacon = await prisma.dish.create({
     data: {
       name: "Combo Duplo Bacon",
-      imageUrl: "https://i.imgur.com/LsCMuqA.jpeg",
       description: "Bacon Double Crunch + Batata Rústica + Refrigerante",
       price: 62.0,
       categoryId: combos.id,
@@ -422,7 +400,6 @@ const veggieGrill = await prisma.dish.create({
   const comboChickenCrispy = await prisma.dish.create({
     data: {
       name: "Combo Chicken Crispy",
-      imageUrl: "https://i.imgur.com/r99VWwN.jpeg",
       description: "Buffalo Chicken Bites + Batata Rústica + Suco Natural de Laranja",
       price: 50.0,
       categoryId: combos.id,
@@ -432,7 +409,6 @@ const veggieGrill = await prisma.dish.create({
   const comboVeggie = await prisma.dish.create({
     data: {
       name: "Combo Veggie",
-      imageUrl: "https://i.imgur.com/UtmPTTJ.jpeg",
       description: "Veggie Grill Burger + Batata Rústica + Limonada Suíça",
       price: 58.0,
       categoryId: combos.id,
@@ -442,7 +418,6 @@ const veggieGrill = await prisma.dish.create({
   const comboKids = await prisma.dish.create({
     data: {
       name: "Combo Kids",
-      imageUrl: "https://i.imgur.com/Lxa4Cj5.jpeg",
       description: "Classic Smash Burger (metade) + Batata Rústica + Suco Natural de Laranja",
       price: 42.0,
       categoryId: combos.id,
